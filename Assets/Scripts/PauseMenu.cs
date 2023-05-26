@@ -18,6 +18,7 @@ public class PauseMenu : MonoBehaviour
     
     void Start()
     {
+        Cursor.visible = false;
         starterAssets = GameObject.Find("Player").GetComponent<StarterAssetsInputs>();
         pauseMenu.SetActive(false);
     }

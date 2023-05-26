@@ -5153,6 +5153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f665982a6a2bd044db5a67e49770fcb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  desactivar: {fileID: 0}
   resume: {fileID: 1118199640}
   mainmenu: {fileID: 388153089}
   quit: {fileID: 1702525483}
