@@ -3,12 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using StarterAssets;
+using UnityEngine.EventSystems;
 
 public class PauseMenu : MonoBehaviour
 {
+    [SerializeField] GameObject desactivar;
+    [SerializeField] private GameObject resume;
+    [SerializeField] private GameObject mainmenu;
+    [SerializeField] private GameObject quit;
     public GameObject pauseMenu;
     public static bool isPaused;
     StarterAssetsInputs starterAssets;
+    //MouseLook mouseLook;
     
     void Start()
     {
@@ -23,12 +29,14 @@ public class PauseMenu : MonoBehaviour
         {
             if(isPaused)
             {
-                starterAssets.cursorLocked = true;
+                //starterAssets.cursorLocked = true;
+                starterAssets.enabled = true;
                 ResumeGame();
             }
             else
             {
-                starterAssets.cursorLocked = false;
+                //starterAssets.cursorLocked = false;
+                starterAssets.enabled = false;
                 PauseGame();
             }
         }
@@ -39,7 +47,8 @@ public class PauseMenu : MonoBehaviour
         pauseMenu.SetActive(true);
         Time.timeScale = 0f;
         isPaused = true;
-        Cursor.visible = true;
+        Cursor.visible = false;
+        EventSystem.current.SetSelectedGameObject(resume);
     }
 
     public void ResumeGame()
@@ -48,6 +57,7 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1f;
         isPaused = false;
         Cursor.visible = false;
+        EventSystem.current.SetSelectedGameObject(null);
     }
 
     public void GoToMainMenu()
