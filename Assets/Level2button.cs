@@ -15,7 +15,7 @@ public class Level2button : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            if (Input.GetKey(KeyCode.E) && gameManager.points >= 0)
+            if (Input.GetKey(KeyCode.E) && gameManager.points >= 2400)
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             }

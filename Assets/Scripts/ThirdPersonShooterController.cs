@@ -25,9 +25,10 @@ public class ThirdPersonShooterController : MonoBehaviour
     public AudioClip sonido;
     public Text ammoText;
     private AudioSource audioSource;
+    public Vector3 mouseWorldPosition;
     bool shootingTime = true;
     public int currentbullets;
-
+    public bool rafagas = true;
     private ThirdPersonController thirdPersonController;
     private StarterAssetsInputs starterAssetsInputs;
     private Animator animator;
@@ -51,7 +52,7 @@ public class ThirdPersonShooterController : MonoBehaviour
     private void Update()
     {
         ammoText.text = currentbullets.ToString();
-        Vector3 mouseWorldPosition = Vector3.zero;
+        mouseWorldPosition = Vector3.zero;
 
         Vector2 screenCenterPoint = new Vector2(Screen.width / 2f, Screen.height / 2f);
         Ray ray = Camera.main.ScreenPointToRay(screenCenterPoint);
@@ -101,10 +102,13 @@ public class ThirdPersonShooterController : MonoBehaviour
             Instantiate(pfBulletProjectile, spawnBulletPosition.position, Quaternion.LookRotation(aimDir, Vector3.up));
             starterAssetsInputs.shoot = false;
         }
-        if (Input.GetMouseButton(0) && starterAssetsInputs.aim && currentbullets > 0 && pistol.activeSelf == false && pistolBurst.activeSelf == true)
+        if (Input.GetMouseButtonDown(0) && starterAssetsInputs.aim && currentbullets > 0 && pistol.activeSelf == false && pistolBurst.activeSelf == true)
         {
-            Vector3 aimDir = (mouseWorldPosition - spawnBulletPosition.position).normalized;
-            Instantiate(pfBulletProjectile, spawnBulletPositionBurst.position, Quaternion.LookRotation(aimDir, Vector3.up));
+  
+                StartCoroutine(Disparar());
+                Debug.Log("pene");
+                rafagas = false;
+            
         }
 
         if (currentbullets > 90)
@@ -112,6 +116,18 @@ public class ThirdPersonShooterController : MonoBehaviour
             currentbullets = 90;
         }
 
+    }
+    IEnumerator Disparar()
+    {
+        Debug.Log("Peneson");
+        Vector3 aimDir = (mouseWorldPosition - spawnBulletPosition.position).normalized;
+        Instantiate(pfBulletProjectile, spawnBulletPositionBurst.position, Quaternion.LookRotation(aimDir, Vector3.up));
+        yield return new WaitForSeconds(0.1f);
+        Instantiate(pfBulletProjectile, spawnBulletPositionBurst.position, Quaternion.LookRotation(aimDir, Vector3.up));
+        yield return new WaitForSeconds(0.1f);
+        Instantiate(pfBulletProjectile, spawnBulletPositionBurst.position, Quaternion.LookRotation(aimDir, Vector3.up));
+        yield return new WaitForSeconds(0.1f);
+        rafagas = true;
 
     }
 }

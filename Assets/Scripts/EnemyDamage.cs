@@ -30,7 +30,7 @@ public class EnemyDamage : MonoBehaviour
 
     public void Death()
     {
-        gameManager.AddPoints(10);
+        gameManager.AddPoints(100);
         gameObject.SetActive(false);
     }
 

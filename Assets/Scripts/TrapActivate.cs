@@ -25,10 +25,10 @@ public class TrapActivate : MonoBehaviour
         if(other.gameObject.CompareTag("Player"))
         {
             Debug.Log("Player Detected");
-            if(Input.GetKeyDown(interact) && gameManager.points == 10)
+            if(Input.GetKeyDown(interact) && gameManager.points == 1500)
             {
                 Trap.SetActive(true);
-                gameManager.points = gameManager.points - 10;
+                gameManager.points = gameManager.points - 1500;
                 StartCoroutine(TrapTime());
             }
         }
