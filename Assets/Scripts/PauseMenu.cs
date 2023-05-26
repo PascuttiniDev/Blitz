@@ -47,7 +47,6 @@ public class PauseMenu : MonoBehaviour
         pauseMenu.SetActive(true);
         Time.timeScale = 0f;
         isPaused = true;
-        Cursor.visible = false;
         EventSystem.current.SetSelectedGameObject(resume);
     }
 
@@ -56,7 +55,6 @@ public class PauseMenu : MonoBehaviour
         pauseMenu.SetActive(false);
         Time.timeScale = 1f;
         isPaused = false;
-        Cursor.visible = false;
         EventSystem.current.SetSelectedGameObject(null);
     }
 
