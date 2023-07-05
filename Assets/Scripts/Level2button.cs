@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class Level2button : MonoBehaviour
 {
     GameManager gameManager;
+    public float requiredPoints = 2400;
 
     private void Start()
     {
@@ -15,7 +16,7 @@ public class Level2button : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            if (Input.GetKey(KeyCode.E) && gameManager.points >= 2400)
+            if (Input.GetKey(KeyCode.E) && gameManager.points >= requiredPoints)
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             }
