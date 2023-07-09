@@ -6,7 +6,10 @@ using UnityEngine.EventSystems;
 
 public class MainMenu : MonoBehaviour
 {
-
+    public void Update()
+    {
+        Cursor.visible = true;
+    }
     public void PlayGame()
     {
         SceneManager.LoadScene(1);

@@ -18,7 +18,7 @@ public class Level2button : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.E) && gameManager.points >= requiredPoints)
             {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1, LoadSceneMode.Single);
             }
         }
     }
